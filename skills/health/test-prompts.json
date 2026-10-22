@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "skills 定义项目 → /health scan", "expected": "识别项目性质，给出适配扫描方案或说明大部分维度不适用"},
+  {"id": 2, "prompt": "Vue 项目 → /health scan", "expected": "完整 8 维度扫描，输出问题报告+健康度"},
+  {"id": 3, "prompt": "/health fix HEALTH-001", "expected": "单项修复预览+确认+局部重扫+全局回归验证"}
+]

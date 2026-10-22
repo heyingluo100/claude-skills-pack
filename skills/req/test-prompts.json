@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "/req init 后直接 /req feature", "expected": "阶段门禁阻断，提示先走 position/user/compete"},
+  {"id": 2, "prompt": "/req init 用户管理系统，走完整 6 阶段到 finalize", "expected": "各阶段产出物齐全，context.json 的 stage 正确推进"},
+  {"id": 3, "prompt": "finalize 之后 /req update feature 调整某功能", "expected": "三层偏差检测触发，展示 diff 等确认"}
+]

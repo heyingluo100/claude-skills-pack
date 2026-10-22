@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "新会话启动，session.json 有 activeTask", "expected": "弹出恢复提示，列出任务/进度/decisions"},
+  {"id": 2, "prompt": "/dev done", "expected": "5 关闭环：代码/测试/lint/UI/安全全部执行"},
+  {"id": 3, "prompt": "/dev start REQ-A-003", "expected": "读 PRD 的 AC，制定迭代计划，写 session.json"}
+]

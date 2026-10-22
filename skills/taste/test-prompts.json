@@ -1,0 +1,95 @@
+{
+  "skill": "taste",
+  "version": "1.0.0",
+  "description": "测试 /taste skill 的 brief 推断、规则注入、AI Tells 覆盖、preflight 自查能力",
+  "tests": [
+    {
+      "id": "minimalist-landing",
+      "description": "克制简洁产品 landing，对标 Linear/Notion",
+      "prompt": "/taste analyze \"做一个克制简洁的产品 landing page，对标 Linear/Notion 风格\"",
+      "expected_dials": {"V": 5, "M": 3, "D": 2},
+      "expected_signals": ["Design Read", "minimalist", "editorial", "Linear", "Notion"],
+      "must_not_recommend": ["3 列等宽 feature cards", "AI 紫色渐变", "居中 hero + dark mesh"]
+    },
+    {
+      "id": "saas-modern-landing",
+      "description": "现代 SaaS 产品官网",
+      "prompt": "/taste analyze \"做一个 modern SaaS 产品官网，主打 AI workflow 自动化\"",
+      "expected_dials": {"V": 7, "M": 5, "D": 4},
+      "expected_signals": ["Design Read", "SaaS", "asymmetric split", "bento"],
+      "must_not_recommend": ["3 列等宽 feature cards", "Elevate", "Seamless"]
+    },
+    {
+      "id": "data-dashboard",
+      "description": "数据密集型仪表盘",
+      "prompt": "/taste analyze \"做一个 data-heavy dashboard，要展示大量指标和图表\"",
+      "expected_dials": {"V": 4, "M": 3, "D": 8},
+      "expected_signals": ["Design Read", "dashboard", "信息密度"],
+      "must_not_recommend": ["大留白", "Hero 视口纪律"]
+    },
+    {
+      "id": "awwwards-portfolio",
+      "description": "实验性获奖级作品集",
+      "prompt": "/taste analyze \"做一个 Awwwards 级别的实验性设计师作品集\"",
+      "expected_dials": {"V": 9, "M": 9, "D": 4},
+      "expected_signals": ["Design Read", "实验", "kinetic", "asymmetric"],
+      "must_not_recommend": ["居中对称布局", "模板感"]
+    },
+    {
+      "id": "agency-portfolio",
+      "description": "广告/设计 agency 作品集",
+      "prompt": "/taste analyze \"做一个 agency 网站，展示我们的 case study\"",
+      "expected_dials": {"V": 8, "M": 7, "D": 4},
+      "expected_signals": ["Design Read", "agency", "case study"],
+      "must_not_recommend": ["3 列等宽"]
+    },
+    {
+      "id": "government-website",
+      "description": "政务/企业级网站",
+      "prompt": "/taste analyze \"做一个政务服务网站，主打信息公开和办事入口\"",
+      "expected_dials": {"V": 3, "M": 2, "D": 5},
+      "expected_signals": ["Design Read", "政务", "保守", "信息层级"],
+      "must_not_recommend": ["实验布局", "高 motion"]
+    },
+    {
+      "id": "tells-list",
+      "description": "查看 AI Tells 完整黑名单",
+      "prompt": "/taste tells",
+      "expected_signals": ["视觉 Tells", "排版 Tells", "布局 Tells", "内容 Tells", "微元素 Tells", "技术 Tells"],
+      "expected_count": 60
+    },
+    {
+      "id": "preflight-check",
+      "description": "提交前 30 项自查表",
+      "prompt": "/taste preflight",
+      "expected_signals": ["设计纪律", "Hero", "Layout", "排版", "色彩", "内容", "技术"],
+      "expected_count": 30
+    },
+    {
+      "id": "dials-override",
+      "description": "手动覆盖旋钮值",
+      "prompt": "/taste dials 5 3 2",
+      "expected_signals": ["V=5", "M=3", "D=2", "已写入"]
+    },
+    {
+      "id": "rules-output",
+      "description": "输出当前完整注入规则",
+      "prompt": "/taste rules",
+      "expected_signals": ["第一层", "第二层", "第三层", "第四层", "项目偏好层", "Linear App"]
+    }
+  ],
+  "anti_tests": [
+    {
+      "id": "no-direct-coding",
+      "description": "/taste 不应直接改业务代码",
+      "prompt": "/taste analyze \"做个 landing\" 然后帮我写 Hero.vue",
+      "expected_behavior": "拒绝写代码，告知 /taste 只输出规则文档，需手动或 /scaffold 实现"
+    },
+    {
+      "id": "respect-project-preference",
+      "description": "项目偏好层应压过上游默认",
+      "prompt": "/taste tells 然后告诉我能不能用 Inter 字体",
+      "expected_behavior": "明确允许 Inter（项目偏好覆盖），并解释原因"
+    }
+  ]
+}

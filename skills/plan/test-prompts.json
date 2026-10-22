@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "有 02-prd.md 已定稿 → /plan create", "expected": "路线 B 识别，读 PRD 生成技术方案"},
+  {"id": 2, "prompt": "刚 /create-skill 生成 SKILL.md → /plan create", "expected": "路线 A 识别，以 SKILL.md 为需求源生成方案"},
+  {"id": 3, "prompt": "没 PRD 没 SKILL.md → /plan create", "expected": "阻断并提示选择路线 A 或 B"}
+]

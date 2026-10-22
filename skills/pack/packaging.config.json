@@ -1,0 +1,100 @@
+{
+  "artifact": "claude-skills-pack.zip",
+  "staging": ".pack-staging/build",
+  "sources": [
+    {
+      "type": "template",
+      "src": ".claude/skills/pack/templates/install-readme.md",
+      "dest": "README.md",
+      "note": "静态安装指南模板"
+    },
+    {
+      "type": "copy",
+      "src": "CLAUDE.md",
+      "dest": "CLAUDE.md",
+      "note": "项目根 CLAUDE.md → 包内全局版"
+    },
+    {
+      "type": "copy",
+      "src": "CLAUDE.md",
+      "dest": "project-CLAUDE.md",
+      "note": "同一份内容，另存一个文件名作项目模板"
+    },
+    {
+      "type": "copy",
+      "src": "~/.claude/design-system.md",
+      "dest": "design-system.md",
+      "note": "全局设计规范，从用户 home 取"
+    },
+    {
+      "type": "copyDir",
+      "src": ".claude/skills",
+      "dest": "skills",
+      "note": "skill 定义全集，按 excludes 过滤"
+    }
+  ],
+  "excludes": [
+    "*.token-cache.json",
+    ".git",
+    ".DS_Store",
+    "results.tsv",
+    "*.bak-*",
+    "node_modules",
+    "*.log",
+    ".pack-staging"
+  ],
+  "skillsWhitelist": {
+    "_doc": "对 .claude/skills/{any}/ 下的文件按白名单收取。命中任一规则即进包；其它默认不进。excludes 仍作敏感兜底叠加。",
+    "alwaysInclude": [
+      "SKILL.md",
+      "test-prompts.json"
+    ],
+    "includeDirs": [
+      "references/**",
+      "assets/**",
+      "agents/**"
+    ],
+    "includeDirsExcept": [
+      {
+        "dir": "scripts/**",
+        "except": "scripts/dev/**",
+        "_doc": "scripts/ 全收，但 scripts/dev/ 视为开发期工具不打包"
+      }
+    ],
+    "referenceFallback": {
+      "_doc": "扫 SKILL.md，把它引用的相对路径也纳入。匹配两种写法：(1) markdown 链接 [text](path)；(2) 反引号包裹且后缀是 json/md/html/js/mjs/ts/ps1/sh/py/yaml/yml/png/svg/jpg/jpeg/gif/css/txt/xml/tsv/csv 之一。跳过：绝对 URL、锚点、含 .. 的路径、以 .claude/ 开头的冗长项目级路径（作者通常会另写短形式）。仅 1 层、禁跨 skill。",
+      "enabled": true,
+      "maxDepth": 1,
+      "allowCrossSkill": false
+    }
+  },
+  "triggers": [
+    "CLAUDE.md",
+    ".claude/skills/**/SKILL.md",
+    ".claude/skills/**/references/**",
+    ".claude/skills/**/assets/**",
+    ".claude/skills/**/agents/**",
+    ".claude/skills/**/scripts/**",
+    ".claude/skills/**/test-prompts.json",
+    ".claude/skills/pack/templates/install-readme.md",
+    "~/.claude/design-system.md"
+  ],
+  "shareMode": {
+    "artifact": "claude-skills-pack-share.zip",
+    "excludesOverride": [
+      "*.token-cache.json"
+    ],
+    "readmeBanner": "⚠️ 本包为「分享版」，含发起人本地凭证（如 *.token-cache.json）。仅限收件人本人使用，禁止 commit / push / 二次分发。\n",
+    "redLines": [
+      "禁止 commit（产物必须在 .gitignore 内才允许生成）",
+      "禁止 push 到任何远程仓库",
+      "禁止二次分发（凭证泄露责任归发起人）"
+    ]
+  },
+  "constraints": {
+    "maxSizeMB": 50,
+    "claudeMdConsistency": "CLAUDE.md 和 project-CLAUDE.md 内容必须完全一致（均来自项目根 CLAUDE.md）",
+    "sensitiveCheck": "敏感文件（token / .git / results.tsv / .bak-*）禁止出现在 normal 模式产物中",
+    "shareModeIsolation": "share 模式产物名必须区别于 normal 模式，且必须在 .gitignore 内"
+  }
+}

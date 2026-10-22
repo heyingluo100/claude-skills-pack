@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "有 standards.md → /lint check", "expected": "按项目规则跑，输出违规清单"},
+  {"id": 2, "prompt": "无 standards.md → /lint check", "expected": "退化到内置 7+7 默认规则+提醒"},
+  {"id": 3, "prompt": "/lint fix", "expected": "只修纯技术性问题（格式、命名），业务相关不动"}
+]

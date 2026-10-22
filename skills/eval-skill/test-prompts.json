@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "prompt": "/eval-skill create-skill --taskset smoke",
+    "expected": "读取 create-skill 的 SKILL.md 和 test-prompts.json,建立或复用 smoke 任务集,输出评估计划、运行方式、写入路径和可比性限制,不直接修改 create-skill。"
+  },
+  {
+    "id": 2,
+    "prompt": "评估 review 这个 skill 是否在同类验收任务里更少绕路,要有 trace 和 metrics",
+    "expected": "识别目标 skill 为 review,选择 compare 或 with_skill 模式,记录 trace 摘要和 metrics,并给出归因报告路径。"
+  },
+  {
+    "id": 3,
+    "prompt": "用之前的任务集回归复测 darwin-skill,看新版有没有退化",
+    "expected": "使用 regression 模式,复用同一任务集;如任务集变化或缺历史 baseline,则标注不可比、不确定或 initial baseline,不能宣称稳定改善。"
+  },
+  {
+    "id": 4,
+    "prompt": "看看某个 skill 好不好用",
+    "expected": "如果目标 skill 不明确,先要求用户指定目标;不泛泛给分,不虚报实证评估。"
+  }
+]

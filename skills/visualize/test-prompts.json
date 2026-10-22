@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "prompt": "把 OUTLINE.md 做成一个展示页,讲清楚当前 skills 主链路和限制",
+    "expected": "先读取用户给出的文件路径,生成项目内 docs/visualize/{topic}.html;页面应覆盖主链路、限制规则和关键边界,并说明未默认打开浏览器"
+  },
+  {
+    "id": 2,
+    "prompt": "帮我把这段复盘内容做成 Anthropic 风格的可视化页面:问题、原因、改进动作、后续风险",
+    "expected": "识别为直接文本输入,选择 Anthropic 风格,生成单文件 HTML,包含问题-原因-动作-风险的结构化展示,不使用外部依赖"
+  },
+  {
+    "id": 3,
+    "prompt": "做个页面介绍 .claude/skills/pack/SKILL.md 这个 skill",
+    "expected": "先读取 SKILL.md,生成 Skill 指南型页面,覆盖定位、触发语、输入、流程、输出、安全边界和与主链路关系"
+  },
+  {
+    "id": 4,
+    "prompt": "做个展示页,保存到 C:\\temp\\workflow.html",
+    "expected": "拒绝默认写入项目外路径,改为建议或使用当前项目内 docs/visualize/ 或 .skills/visualize/;不打开浏览器"
+  }
+]

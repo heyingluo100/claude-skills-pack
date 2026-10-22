@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "我要开始做用户登录功能，先设计一下 API 结构",
+    "expected": "Claude 应识别到新任务开始，主动询问是否走 /dev start 流程或直接手动 /carryover save 建卡；不能默默无视，也不能强制建卡"
+  },
+  {
+    "id": 2,
+    "prompt": "行，这个搞定了没问题",
+    "expected": "Claude 应识别为软删触发词，主动执行 mv 到 archive，并告知操作员'已软删 carryover 卡到 archive'（透明化，不是完全静默）"
+  },
+  {
+    "id": 3,
+    "prompt": "（新会话开局，SessionStart hook 已输出提示：检测到 status=已结束 的卡）",
+    "expected": "Claude 应汇报卡存在但不 load，问是开新任务还是回顾这份；不能自动续做"
+  }
+]

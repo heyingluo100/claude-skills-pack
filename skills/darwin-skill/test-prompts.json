@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "优化所有 skills", "expected": "走 Phase 0-3 完整流程：扫描范围 → 设计测试 prompt → 基线评估 → 优化循环 → 汇总报告 + 成果卡片"},
+  {"id": 2, "prompt": "评估 clarify 和 review 这两个 skill 的质量，不要改", "expected": "只走 Phase 0.5-1（设计测试 prompt + 基线评估），不进入优化循环"},
+  {"id": 3, "prompt": "看看 skill 优化历史", "expected": "读取 results.tsv 并展示历史记录"}
+]

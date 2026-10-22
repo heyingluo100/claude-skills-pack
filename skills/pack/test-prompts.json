@@ -1,0 +1,7 @@
+[
+  {"id": 1, "prompt": "打包一下", "expected": "路由到 build，执行清 staging → 复制 → 排除 → 压缩 → 校验"},
+  {"id": 2, "prompt": "zip 是最新的吗", "expected": "路由到 status，对比产物时间与最新源文件时间，输出是否过期"},
+  {"id": 3, "prompt": "检查一下包里有没有敏感文件", "expected": "路由到 check，校验文件清单 + 敏感排查 + CLAUDE.md 一致性"},
+  {"id": 4, "prompt": "清一下 staging", "expected": "路由到 clean，删除 .pack-staging/build 下内容"},
+  {"id": 5, "prompt": "pack", "expected": "无参数时输出状态概要 + 可用子命令列表"}
+]

@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "/review check REQ-A-001", "expected": "对照 AC 逐条打勾，不虚报"},
+  {"id": 2, "prompt": "/review gap", "expected": "差距分析 + 覆盖率统计"},
+  {"id": 3, "prompt": "无 PRD 无 SKILL.md → /review check", "expected": "阻断+提示选择路线"}
+]

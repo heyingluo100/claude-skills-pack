@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "做个发版前检查 changelog 是否更新的小工具", "expected": "识别指令型→不建 scripts/，生成标准四件套"},
+  {"id": 2, "prompt": "做个爬某网站自动生成报告的 skill", "expected": "识别工具型→建 scripts/+入口模板"},
+  {"id": 3, "prompt": "做一套完整的用户权限管理系统", "expected": "识别不适用轻量流程→建议转 /req"}
+]

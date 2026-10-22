@@ -1,0 +1,4 @@
+[
+  {"id": 1, "prompt": "/scaffold create component UserCard", "expected": "三级模板降级（custom→内置文件→SKILL.md 内联），生成到正确位置"},
+  {"id": 2, "prompt": "目标文件已存在 → /scaffold create", "expected": "不覆盖，询问处理方式"}
+]

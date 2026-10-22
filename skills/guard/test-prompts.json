@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "有 guard log → /guard status", "expected": "统计各类偏离次数+趋势"},
+  {"id": 2, "prompt": "/guard override 本次蔓延已评估可接受", "expected": "写入 log，达 3 次时触发 /req update 提醒"},
+  {"id": 3, "prompt": "无 log 无 product → /guard status", "expected": "优雅提示无记录，不崩"}
+]

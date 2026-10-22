@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "context 不够了，先存一下交接卡，明天再继续做 cloth-recolor 槽位图",
+    "expected": "触发 /handoff save。产出 .skills/cloth-recolor/handoff/{时间}.md，结构含 frontmatter（status=进行中）、当前任务、已完成步骤、待操作员决策、关键决策、不要做的事。字数 200-800。不应去 Read .skills/archive/conversations/ 下的 export txt。"
+  },
+  {
+    "id": 2,
+    "prompt": "继续昨天的工作",
+    "expected": "新会话开头场景。应该先 /handoff load：读 .skills/context.json 拿 activeProduct → Glob handoff 目录找最新一份 → Read 最新卡 → 一句话汇报『当前状态 + 下一步』+ 等操作员确认。禁止整个 Read 旧 export txt。"
+  },
+  {
+    "id": 3,
+    "prompt": "我现在没在做某个具体产品，就是改一些通用脚本，但是 context 快爆了，怎么交接？",
+    "expected": "无 activeProduct 边界场景。应该降级到 .skills/handoff/ 全局目录写卡（不要硬塞个 product 名），并提醒操作员『建议先 /req switch 切到具体 product，否则按全局目录走』。"
+  }
+]

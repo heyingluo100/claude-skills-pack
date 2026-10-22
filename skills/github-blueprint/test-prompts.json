@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "prompt": "为 report-review skill 查找 GitHub 蓝本",
+    "expected": "先做本地查重和搜索简报,再按 filename:SKILL.md、agent skill、workflow 等分层查询,输出候选评分、命中证据、许可证、维护情况和采用策略,报告默认落到 .skills/"
+  },
+  {
+    "id": 2,
+    "prompt": "根据当前 skill-map 给 planned skills 做蓝本侦察",
+    "expected": "读取 activeProduct 和 skill-map,列出 planned skills,逐个生成或建议生成蓝本报告"
+  },
+  {
+    "id": 3,
+    "prompt": "网络不可用,给 image-review skill 做蓝本侦察",
+    "expected": "记录联网失败原因,完成本地查重和离线建议,不阻塞后续 create-skill"
+  },
+  {
+    "id": 4,
+    "prompt": "跳过外部搜索,只记录为什么不查 GitHub",
+    "expected": "生成用户跳过记录,说明风险和后续 review 提示"
+  },
+  {
+    "id": 5,
+    "prompt": "为 skill 这个很泛的关键词查蓝本,避免搜到简历技能和游戏技能",
+    "expected": "先生成搜索简报,补充目标动作、对象、产物形态和排除方向;对 resume、game、course 等跑偏结果不纳入候选对比"
+  },
+  {
+    "id": 6,
+    "prompt": "只找到一个许可证未知的仓库,能不能作为蓝本",
+    "expected": "标记搜索质量有限或不足,候选只能作为灵感参考;报告记录许可证未知、未纳入或低评分原因,不阻塞 create-skill"
+  }
+]
